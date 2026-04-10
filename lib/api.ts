@@ -1,7 +1,7 @@
 export async function getProducts() {
   const res = await fetch("https://dummyjson.com/products");
   const data = await res.json();
-  return data.products; // DummyJSON ürünleri products içinde döndürür
+  return data.products;
 }
 
 export async function getCategories() {
