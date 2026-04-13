@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 
 export default function Navbar(){
 
@@ -21,15 +22,26 @@ export default function Navbar(){
 
     <nav className="flex justify-between p-5 border-b">
 
-      <Link href="/">
-        Store
-      </Link>
-
       <div className="flex gap-4">
 
-        <Link href="/products">
-          Products
-        </Link>
+      <Link href="/">
+        Home
+      </Link>
+
+      <Link href="/products">
+        Products
+      </Link>
+
+      </div>
+
+      <Image
+        src="/logo.png"
+        alt="Veloraza logo"
+        width={150}
+        height={20}
+      />
+
+      <div className="flex gap-4">
 
         <Link href="/cart">
           Cart
