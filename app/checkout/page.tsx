@@ -23,7 +23,6 @@ export default function CheckoutPage(){
       return
     }
 
-    // fake ödeme
     clearCart()
 
     router.push("/order-success")

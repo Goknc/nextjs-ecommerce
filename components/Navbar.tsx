@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import { Handbag, Heart, UserRound } from "lucide-react"
 
 export default function Navbar(){
 
@@ -20,15 +21,15 @@ export default function Navbar(){
 
   return(
 
-    <nav className="flex justify-between p-5 border-b">
+    <nav className="px-16 flex justify-between border-b">
 
       <div className="flex gap-4">
 
-      <Link href="/">
+      <Link className="nav-link" href="/">
         Home
       </Link>
 
-      <Link href="/products">
+      <Link className="nav-link" href="/products">
         Products
       </Link>
 
@@ -37,30 +38,37 @@ export default function Navbar(){
       <Image
         src="/logo.png"
         alt="Veloraza logo"
-        width={150}
+        width={250}
         height={20}
       />
 
       <div className="flex gap-4">
 
-        <Link href="/cart">
-          Cart
+        <Link className="nav-link" href="/cart">
+          <Handbag />
         </Link>
 
-        <Link href="/favorites">
-          Favorites
+        <Link className="nav-link" href="/favorites">
+          <Heart />
         </Link>
 
         {token ? (
 
-          <button onClick={handleLogout}>
-            Logout
-          </button>
+        <Link
+          href="#"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault()
+            handleLogout()
+          }}
+        >
+          <UserRound />
+        </Link>
 
         ) : (
 
-          <Link href="/login">
-            Login
+          <Link className="nav-link" href="/login">
+            <UserRound />
           </Link>
 
         )}
