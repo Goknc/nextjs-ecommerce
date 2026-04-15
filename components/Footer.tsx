@@ -1,31 +1,35 @@
 "use client"
 
-import { Globe } from "lucide-react"
-import { MapPin, Phone, Mail } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
 
   return (
 
-    <footer className="bg-black text-white mt-20">
+    <footer className="bg-white text-[#696E73] mt-20 border-t border-[#E9E9E9]">
 
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-base">
 
-      <div className="space-y-2 text-gray-400 text-sm">
+      <div className="space-y-2 text-gray-400">
+
+        <Image
+          src="/logo.png"
+          alt="Veloraza logo"
+          width={250}
+          height={20}
+        />
 
         <div className="flex items-center gap-2">
-          <MapPin className="w-4 h-4" />
           <span>İzmir, Türkiye</span>
         </div>
 
         <div className="flex items-center gap-2">
-          <Phone className="w-4 h-4" />
           <span>+90 555 555 55 55</span>
         </div>
 
         <div className="flex items-center gap-2">
-          <Mail className="w-4 h-4" />
           <span>info@veloraza.com</span>
         </div>
 
@@ -33,7 +37,7 @@ export default function Footer() {
 
         <div>
 
-          <h3 className="font-semibold mb-4">
+          <h3 className="font-semibold mb-4 text-[#101010]">
             Quick Links
           </h3>
 
@@ -43,7 +47,6 @@ export default function Footer() {
             <li><Link href="/products">Products</Link></li>
             <li><Link href="/favorites">Favorites</Link></li>
             <li><Link href="/cart">Cart</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
 
           </ul>
 
@@ -51,25 +54,27 @@ export default function Footer() {
 
         <div>
 
-          <h3 className="font-semibold mb-4">
+          <h3 className="font-semibold mb-4 text-[#101010]">
             Subscribe
           </h3>
 
-          <p className="text-gray-400 mb-4 text-sm">
+          <p className="text-gray-400 mb-4">
             Get updates about new products and offers.
           </p>
 
           <div className="flex">
+            
+            <div className="relative w-full max-w-md">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="w-full py-3 pl-4 pr-12 text-black border border-gray-300 rounded-full focus:outline-none"
+              />
 
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full p-2 text-black"
-            />
-
-            <button className="bg-white text-black px-4">
-              Subscribe
-            </button>
+              <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-black text-white p-2 rounded-full hover:scale-110 transition">
+                <ArrowUpRight size={16} />
+              </button>
+            </div>
 
           </div>
 
@@ -77,7 +82,7 @@ export default function Footer() {
 
       </div>
 
-      <div className="border-t border-gray-700 text-center py-4 text-sm text-gray-400">
+      <div className="border-t border-[#E9E9E9] text-center py-4 text-sm text-gray-400">
 
         © 2026 Made by Gökhan
 

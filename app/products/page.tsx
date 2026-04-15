@@ -1,81 +1,83 @@
-import PriceFilter from "@/components/PriceFilter";
-import ProductCard from "@/components/ProductCard";
-import ProductSearch from "@/components/ProductSearch";
-import CategoryFilter from "@/components/CategoryFilter";
-import ProductSort from "@/components/ProductSort";
-import { getCategories } from "@/lib/api";
+import ProductCard from "@/components/ProductCard"
+import ProductSort from "@/components/ProductSort"
+import FilterTrigger from "@/components/FilterTrigger"
+import { getCategories } from "@/lib/api"
 
 async function getProducts() {
   const res = await fetch("https://dummyjson.com/products", {
     cache: "no-store",
-  });
+  })
 
-  const data = await res.json();
-  return data.products;
+  const data = await res.json()
+  return data.products
+}
+
+type SearchParams = {
+  search?: string
+  min?: string
+  max?: string
+  category?: string
+  sort?: string
 }
 
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    search?: string;
-    min?: string;
-    max?: string;
-    category?: string;
-    sort?: string;
-  }>;
+  searchParams: Promise<SearchParams>
 }) {
 
-  const params = await searchParams;
+  const params = await searchParams
 
-  const search = params.search?.toLowerCase() || "";
-  const min = Number(params.min) || 0;
-  const max = Number(params.max) || Infinity;
-  const category = params.category || "";
-  const sort = params.sort || "";
+  const search = params.search?.toLowerCase() || ""
+  const min = Number(params.min) || 0
+  const max = Number(params.max) || Infinity
+  const category = params.category || ""
+  const sort = params.sort || ""
 
-  const products = await getProducts();
-  const categories = await getCategories();
+  const products = await getProducts()
+  const categories = await getCategories()
 
   let filteredProducts = products.filter((p: any) => {
 
-    const title = p.title.toLowerCase();
+    const title = p.title.toLowerCase()
 
-    const matchesSearch = title.includes(search);
-    const matchesPrice = p.price >= min && p.price <= max;
-    const matchesCategory = category ? p.category === category : true;
-
-    return matchesSearch && matchesPrice && matchesCategory;
-
-  });
+    return (
+      title.includes(search) &&
+      p.price >= min &&
+      p.price <= max &&
+      (category ? p.category === category : true)
+    )
+  })
 
   if (sort === "price-asc") {
-    filteredProducts = filteredProducts.sort((a:any,b:any)=>a.price - b.price);
+    filteredProducts = filteredProducts.sort(
+      (a: any, b: any) => a.price - b.price
+    )
   }
 
   if (sort === "price-desc") {
-    filteredProducts = filteredProducts.sort((a:any,b:any)=>b.price - a.price);
+    filteredProducts = filteredProducts.sort(
+      (a: any, b: any) => b.price - a.price
+    )
   }
 
   return (
     <div className="max-w-6xl mx-auto p-10">
 
-      <h1 className="text-2xl font-bold mb-8">All Products</h1>
+      <h1 className="text-2xl font-bold mb-8">
+        All Products
+      </h1>
 
-      <CategoryFilter categories={categories} />
-
-      <ProductSearch />
-
-      <PriceFilter />
+      <FilterTrigger categories={categories} />
 
       <ProductSort />
 
-      <div className="grid grid-cols-4 gap-6">
-        {filteredProducts.map((p:any)=>(
+      <div className="grid grid-cols-4 gap-6 mt-6">
+        {filteredProducts.map((p: any) => (
           <ProductCard key={p.id} product={p} />
         ))}
       </div>
 
     </div>
-  );
+  )
 }
