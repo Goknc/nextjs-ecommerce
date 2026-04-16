@@ -19,11 +19,11 @@ export default function ProductSort(){
   return (
     <select
       onChange={(e)=>handleSort(e.target.value)}
-      className="border p-2 mb-4"
+      className="border py-2 px-4 mb-4 rounded-lg border-[#e9e9e9]"
     >
       <option value="">Sort</option>
-      <option value="price-asc">Price Low → High</option>
-      <option value="price-desc">Price High → Low</option>
+      <option value="price-asc">Price Low To High</option>
+      <option value="price-desc">Price High To Low</option>
     </select>
   )
 }

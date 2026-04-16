@@ -14,9 +14,9 @@ export default function FilterTrigger({ categories }: { categories: any[] }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="border px-4 py-2 mb-4"
+        className="border py-2 px-4 mb-4 rounded-lg border-[#e9e9e9]"
       >
-        Filters
+        Show Filters
       </button>
 
       <FilterSidebar open={open} onClose={() => setOpen(false)}>

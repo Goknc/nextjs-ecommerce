@@ -64,17 +64,18 @@ export default async function ProductsPage({
   return (
     <div className="max-w-6xl mx-auto p-10">
 
-      <h1 className="text-2xl font-bold mb-8">
+      <h1 className="text-4xl font-medium mb-3 text-center">
         All Products
       </h1>
+      <p className="text-center text-[#696E73] w-[500px] mx-auto">Step into our Tops & Shirts Collection, where elegance meets confidence in styles that inspire every moment.</p>
+      <div className="flex justify-between mt-8">
+        <FilterTrigger categories={categories} />
 
-      <FilterTrigger categories={categories} />
-
-      <ProductSort />
-
+        <ProductSort />
+      </div>
       <div className="grid grid-cols-4 gap-6 mt-6">
-        {filteredProducts.map((p: any) => (
-          <ProductCard key={p.id} product={p} />
+        {filteredProducts.map((p: any, index) => (
+          <ProductCard key={index} product={p} />
         ))}
       </div>
 
