@@ -65,7 +65,7 @@ export default async function Page({
             ${product.price}
           </p>
 
-          <div className="flex gap-3 mb-6">
+          <div className="flex gap-3 mb-6 items-center">
             <AddToCartButton product={product} />
             <FavoriteButton productId={product.id} />
           </div>

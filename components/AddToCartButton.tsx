@@ -8,7 +8,7 @@ export default function AddToCart({product}: {product: any}){
     return (
         <button 
             onClick={()=> addToCart(product)}
-            className="bg-white text-black px-4 py-2 mt-4"
+            className="bg-black text-white rounded-2xl px-6 py-2 text-lg"
             >
             Add to Cart
         </button>
