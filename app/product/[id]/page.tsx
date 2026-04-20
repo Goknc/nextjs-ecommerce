@@ -2,12 +2,22 @@ import ProductGallery from "@/components/ProductGallery"
 import AddToCartButton from "@/components/AddToCartButton"
 import FavoriteButton from "@/components/FavoriteButton"
 import { Star } from "lucide-react"
+import ProductCard from "@/components/ProductCard"
 
 async function getProduct(id: number) {
   const res = await fetch(`https://dummyjson.com/products/${id}`, {
     cache: "no-store",
   })
   return res.json()
+}
+
+async function getAllProducts() {
+  const res = await fetch("https://dummyjson.com/products", {
+    cache: "no-store",
+  })
+
+  const data = await res.json()
+  return data.products
 }
 
 export default async function Page({
@@ -19,6 +29,12 @@ export default async function Page({
   const { id } = await params
   const product = await getProduct(Number(id))
 
+  const allProducts = await getAllProducts()
+  const relatedProducts = allProducts
+    .filter((p:any) => p.category === product.category && p.id !== product.id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4)
+
   return (
     <div className="max-w-6xl mx-auto p-10">
 
@@ -28,17 +44,13 @@ export default async function Page({
 
         <div>
 
-          <p className="text-gray-500 mb-2">
+          <p className="text-gray-500 mb-2 text-sm">
             {product.brand}
           </p>
 
           <h1 className="text-3xl font-bold mb-4">
             {product.title}
           </h1>
-
-          <p className="mb-5 text-gray-600">
-            {product.description}
-          </p>
 
           <div className="flex items-center gap-1 mb-4">
 
@@ -63,6 +75,10 @@ export default async function Page({
 
           <p className="text-2xl font-semibold mb-5">
             ${product.price}
+          </p>
+
+          <p className="mb-5 text-gray-600">
+            {product.description}
           </p>
 
           <div className="flex gap-3 mb-6 items-center">
@@ -125,6 +141,22 @@ export default async function Page({
           ))}
 
         </div>
+
+      </div>
+
+      <div className="mt-16">
+
+        <h2 className="text-2xl font-bold mb-6">
+          Related Products
+        </h2>
+
+          <div className="grid grid-cols-4 gap-6">
+
+            {relatedProducts.map((p:any)=>(
+              <ProductCard key={p.id} product={p} />
+            ))}
+
+          </div>
 
       </div>
 
