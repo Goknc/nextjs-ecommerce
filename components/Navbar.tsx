@@ -44,7 +44,7 @@ export default function Navbar(){
         <Image
           src="/logo.png"
           alt="Veloraza logo"
-          width={180}
+          width={200}
           height={20}
         />
 
