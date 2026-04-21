@@ -12,7 +12,7 @@ export default function CartPopup({
   onClose: () => void
 }) {
 
-  const { cart } = useCart()
+  const { cart, removeFromCart, clearCart } = useCart()
   const router = useRouter()
 
   const total = cart.reduce((sum, item) => sum + item.price, 0)
@@ -26,13 +26,13 @@ export default function CartPopup({
         />
       )}
 
-      {/* DRAWER */}
       <div
-        className={`fixed top-0 right-0 h-full w-96 bg-white z-50 p-6 transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-96 bg-white z-50 p-6 flex flex-col transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
 
+        {/* HEADER */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-semibold">Shopping Cart</h2>
 
@@ -41,6 +41,7 @@ export default function CartPopup({
           </button>
         </div>
 
+        {/* ITEMS */}
         <div className="flex-1 overflow-y-auto space-y-4">
 
           {cart.length === 0 && <p>Your cart is empty</p>}
@@ -56,6 +57,14 @@ export default function CartPopup({
               <div className="flex-1">
                 <p className="text-sm font-medium">{item.title}</p>
                 <p className="text-sm text-gray-500">${item.price}</p>
+
+                {/* REMOVE */}
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                  className="text-xs text-red-500 mt-1"
+                >
+                  Remove
+                </button>
               </div>
 
             </div>
@@ -63,6 +72,7 @@ export default function CartPopup({
 
         </div>
 
+        {/* FOOTER */}
         {cart.length > 0 && (
           <div className="mt-6 border-t pt-4">
 
@@ -70,6 +80,14 @@ export default function CartPopup({
               <span>Subtotal</span>
               <span>${total}</span>
             </div>
+
+            {/* CLEAR CART */}
+            <button
+              onClick={clearCart}
+              className="w-full text-sm text-red-500 mb-3"
+            >
+              Clear Cart
+            </button>
 
             <button
               onClick={() => {
