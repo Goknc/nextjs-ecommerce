@@ -40,7 +40,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
         <img
           src={selected}
           style={zoomStyle}
-          className="w-full h-full object-cover transition-transform duration-200"
+          className="w-full h-full object-cover transition-transform duration-200 bg-[#F2F1EF] "
         />
 
       </div>
@@ -53,7 +53,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
             key={i}
             src={img}
             onClick={() => setSelected(img)}
-            className={`w-20 h-20 object-cover rounded cursor-pointer border ${
+            className={`bg-[#F2F1EF] w-20 h-20 object-cover rounded cursor-pointer border ${
               selected === img ? "border-black" : "border-gray-300"
             }`}
           />

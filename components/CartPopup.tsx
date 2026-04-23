@@ -91,7 +91,7 @@ export default function CartPopup({
 
             <button
               onClick={clearCart}
-              className="w-full text-sm text-red-500 mb-3 hover:underline"
+              className="w-full bg-red-600 text-white py-3 mb-2 hover:opacity-90 transition"
             >
               Clear Cart
             </button>

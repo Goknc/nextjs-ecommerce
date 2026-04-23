@@ -1,13 +1,11 @@
 "use client"
 
 import { useCart } from "@/context/CartContext"
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 export default function CheckoutPage(){
 
   const { cart, clearCart } = useCart()
-  const router = useRouter()
 
   const [cardNumber,setCardNumber] = useState("")
   const [name,setName] = useState("")
@@ -17,63 +15,106 @@ export default function CheckoutPage(){
 
   function handlePayment(e: React.FormEvent){
     e.preventDefault()
-
-    if(!cardNumber || !name || !cvv){
-      alert("Please fill all fields")
-      return
-    }
-
-    clearCart()
-
-    router.push("/order-success")
   }
 
   return(
 
-    <div className="max-w-md mx-auto p-10">
+    <div className="max-w-6xl mx-auto p-10 grid grid-cols-1 md:grid-cols-2 gap-10">
 
-      <h1 className="text-2xl mb-6 font-bold">
-        Payment
-      </h1>
+      <div>
 
-      <p className="mb-4">
-        Total: ${total}
-      </p>
+        <h2 className="text-xl font-semibold mb-6">
+          Your Order
+        </h2>
 
-      <form onSubmit={handlePayment} className="flex flex-col gap-3">
+        <div className="space-y-4">
 
-        <input
-          placeholder="Card Number"
-          value={cardNumber}
-          onChange={(e)=>setCardNumber(e.target.value)}
-          className="border p-2"
-        />
+          {cart.map((item, index) => (
 
-        <input
-          placeholder="Name on Card"
-          value={name}
-          onChange={(e)=>setName(e.target.value)}
-          className="border p-2"
-        />
+            <div key={`${item.id}-${index}`} className="flex gap-4 border-b p-3 border-[#F2F1EF]">
 
-        <input
-          placeholder="CVV"
-          value={cvv}
-          onChange={(e)=>setCvv(e.target.value)}
-          className="border p-2"
-        />
+              <img
+                src={item.thumbnail}
+                className="w-16 h-16 object-cover rounded"
+              />
 
-        <button
-          type="submit"
-          className="bg-black text-white p-3 mt-3"
-        >
-          Pay Now
-        </button>
+              <div className="flex-1 flex flex-col justify-center">
+                <p className="font-medium text-sm line-clamp-2">
+                  {item.title}
+                </p>
 
-      </form>
+                <p className="text-gray-700 text-xs">
+                  ${item.price}
+                </p>
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+        <div className="pt-4 space-y-2 text-sm">
+
+          <div className="flex justify-between text-xl font-semibold mt-2">
+            <span>Total</span>
+            <span>${total.toFixed(2)}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <h1 className="text-2xl font-bold mb-6">
+          Payment
+        </h1>
+
+        <form onSubmit={handlePayment} className="space-y-4">
+
+          <input
+            placeholder="Card Number"
+            value={cardNumber}
+            onChange={(e)=>setCardNumber(e.target.value)}
+            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-black border-[#F2F1EF]"
+          />
+
+          <input
+            placeholder="Name on Card"
+            value={name}
+            onChange={(e)=>setName(e.target.value)}
+            className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-black border-[#F2F1EF]"
+          />
+
+          <div className="flex gap-3">
+
+            <input
+              placeholder="MM/YY"
+              className="w-1/2 border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-black border-[#F2F1EF]"
+            />
+
+            <input
+              placeholder="CVV"
+              value={cvv}
+              onChange={(e)=>setCvv(e.target.value)}
+              className="w-1/2 border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-black border-[#F2F1EF]"
+            />
+
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-black text-white py-3 rounded-lg hover:opacity-90 transition"
+          >
+            Pay Now
+          </button>
+
+        </form>
+
+      </div>
 
     </div>
 
   )
-
 }
