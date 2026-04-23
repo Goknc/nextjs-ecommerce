@@ -6,11 +6,13 @@ type Product = {
   id: number;
   title: string;
   price: number;
+  thumbnail: string;
 };
 
 type CartContextType = {
   cart: Product[];
   addToCart: (product: Product) => void;
+  removeFromCart: (id: number) => void;
   clearCart: () => void;
 };
 
@@ -35,13 +37,26 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCart((prev) => [...prev, product]);
   }
 
+  function removeFromCart(id: number) {
+    setCart((prev) => {
+      const index = prev.findIndex(item => item.id === id)
+
+      if (index === -1) return prev
+
+      return [
+        ...prev.slice(0, index),
+        ...prev.slice(index + 1)
+      ]
+    })
+  }
+
   function clearCart() {
     setCart([]);
     localStorage.removeItem("cart");
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
