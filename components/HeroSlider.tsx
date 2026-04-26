@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, Autoplay } from "swiper/modules"
+import Link from "next/link"
 
 import "swiper/css"
 import "swiper/css/navigation"
@@ -57,13 +58,16 @@ export default function HeroSlider() {
                 {slide.subtitle}
               </p>
 
-              <h2 className="text-10xl md:text-6xl font-semibold leading-tight whitespace-pre-line mb-6 max-w-5xl">
+              <h2 className="text-10xl md:text-4xl font-semibold leading-tight whitespace-pre-line mb-6 max-w-5xl">
                 {slide.title}
               </h2>
 
-              <button className="bg-white text-black px-6 py-3 rounded-full text-md font-semibold hover:bg-gray-200 transition">
+              <Link
+                href="/products"
+                className="bg-white text-black px-6 py-3 rounded-full text-md font-semibold hover:bg-gray-200 transition inline-block"
+              >
                 Shop Styles
-              </button>
+              </Link>
 
             </div>
 

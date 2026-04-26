@@ -41,12 +41,14 @@ export default function Navbar(){
 
         </div>
 
-        <Image
-          src="/logo.png"
-          alt="Veloraza logo"
-          width={200}
-          height={20}
-        />
+        <Link href="/" className="hidden md:block">
+          <Image
+            src="/goknc.png"
+            alt="Veloraza logo"
+            width={200}
+            height={20}
+          />
+        </Link>
 
         <div className="flex gap-6 items-center">
 

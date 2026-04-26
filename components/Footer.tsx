@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="space-y-2 text-gray-400">
 
         <Image
-          src="/logo.png"
+          src="/goknc.png"
           alt="Veloraza logo"
           width={250}
           height={20}

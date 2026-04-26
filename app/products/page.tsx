@@ -75,7 +75,7 @@ export default async function ProductsPage({
       </div>
       <div className="grid grid-cols-4 gap-6 mt-6">
         {filteredProducts.map((p: any, index) => (
-          <ProductCard key={index} product={p} />
+          <ProductCard  key={index} product={p} />
         ))}
       </div>
 
