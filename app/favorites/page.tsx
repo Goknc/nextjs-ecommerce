@@ -28,13 +28,13 @@ export default function FavoritesPage() {
         loadProducts()
     },[])
     return (
-        <div className="max-w-6xl mx-auto p-10">
+        <div className="max-w-7xl mx-auto px-16 py-10">
             <h1 className="text-2xl font-bold mb-6">Favorites</h1>
             {products.length === 0 && (
                 <p>No favorite products yet.</p>
             )}
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {products.map((p:any)=>(
                     <ProductCard key={p.id} product={p} />
                 ))}

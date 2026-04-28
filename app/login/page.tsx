@@ -34,7 +34,7 @@ export default function LoginPage(){
   }
 
   return(
-    <div className="max-w-md mx-auto p-10">
+    <div className="max-w-7xl mx-auto p-10">
 
       <h1 className="text-2xl mb-5">Login</h1>
 
@@ -44,7 +44,7 @@ export default function LoginPage(){
           placeholder="username"
           value={username}
           onChange={(e)=>setUsername(e.target.value)}
-          className="border p-2"
+          className="border p-2 border-[#E9E9E9] rounded-lg"
         />
 
         <input
@@ -52,10 +52,10 @@ export default function LoginPage(){
           placeholder="password"
           value={password}
           onChange={(e)=>setPassword(e.target.value)}
-          className="border p-2"
+          className="border p-2 border-[#E9E9E9] rounded-lg"
         />
 
-        <button className="bg-black text-white p-2">
+        <button className="bg-black text-white p-2 rounded-lg">
           Login
         </button>
 

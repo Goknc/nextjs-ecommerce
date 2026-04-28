@@ -34,7 +34,7 @@ export default function ProductGallery({ images }: { images: string[] }) {
       <div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleLeave}
-        className="w-96 overflow-hidden rounded cursor-zoom-in"
+        className="md:w-96 overflow-hidden rounded cursor-zoom-in"
       >
 
         <img

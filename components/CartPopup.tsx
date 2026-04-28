@@ -32,7 +32,7 @@ export default function CartPopup({
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-96 bg-white z-50 flex flex-col transition-transform duration-300 ${
+        className={`w-full md:w-100 fixed top-0 right-0 h-full w-96 bg-white z-50 flex flex-col transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -85,13 +85,13 @@ export default function CartPopup({
           <div className="p-6 border-t">
 
             <div className="flex justify-between mb-4 text-sm">
-              <span>Subtotal</span>
-              <span>${total.toFixed(2)}</span>
+              <span className="font-bold">Subtotal</span>
+              <span className="font-bold">${total.toFixed(2)}</span>
             </div>
 
             <button
               onClick={clearCart}
-              className="w-full bg-red-600 text-white py-3 mb-2 hover:opacity-90 transition"
+              className="w-full bg-red-600 text-white py-3 mb-2 hover:opacity-90 transition rounded-lg"
             >
               Clear Cart
             </button>
@@ -101,14 +101,14 @@ export default function CartPopup({
                 onClose()
                 router.push("/checkout")
               }}
-              className="w-full bg-black text-white py-3 mb-2 hover:opacity-90 transition"
+              className="w-full bg-black text-white py-3 mb-2 hover:opacity-90 transition rounded-lg"
             >
               Check Out
             </button>
 
             <button
               onClick={onClose}
-              className="w-full border py-3 hover:bg-gray-100 transition"
+              className="w-full border py-3 hover:bg-gray-100 transition rounded-lg"
             >
               Continue Shopping
             </button>

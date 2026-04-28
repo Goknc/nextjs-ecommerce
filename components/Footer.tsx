@@ -7,10 +7,9 @@ import { ArrowUpRight } from "lucide-react";
 export default function Footer() {
 
   return (
-
     <footer className="bg-white text-[#696E73] mt-20 border-t border-[#E9E9E9]">
 
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-base">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-base">
 
       <div className="space-y-2 text-gray-400">
 
@@ -46,7 +45,6 @@ export default function Footer() {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/products">Products</Link></li>
             <li><Link href="/favorites">Favorites</Link></li>
-            <li><Link href="/cart">Cart</Link></li>
 
           </ul>
 

@@ -36,9 +36,9 @@ export default async function Page({
     .slice(0, 4)
 
   return (
-    <div className="max-w-6xl mx-auto p-10">
+    <div className="max-w-7xl mx-auto px-6 md:px-16 py-10">
 
-      <div className="flex gap-10">
+      <div className="flex flex-col md:flex-row gap-10">
 
         <ProductGallery images={product.images} />
 
@@ -150,7 +150,7 @@ export default async function Page({
           Related Products
         </h2>
 
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 
             {relatedProducts.map((p:any)=>(
               <ProductCard key={p.id} product={p} />

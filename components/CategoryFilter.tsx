@@ -16,8 +16,8 @@ export default function CategoryFilter({ categories }:any) {
         <>
         <h3 className="mb-5 mt-5 text-xl">Categories</h3>
         <div className="flex flex-col gap-3 mb-3 max-h-80 overflow-auto">
-            {categories.map((cat:any)=>(
-                <button key={cat.id} onClick={()=>handleCategory(cat.slug)} className="text-left px-3 py-1">{cat.name}</button>
+            {categories.map((cat:any, index)=>(
+                <button key={index} onClick={()=>handleCategory(cat.slug)} className="text-left px-3 py-1">{cat.name}</button>
             ))}
         </div>
         </>

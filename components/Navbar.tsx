@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Handbag, Heart, UserRound } from "lucide-react"
+import { Handbag, Heart, UserRound, LogOut } from "lucide-react"
 import CartPopup from "@/components/CartPopup"
 import { useCart } from "@/context/CartContext"
 
@@ -26,8 +26,8 @@ export default function Navbar(){
 
   return(
 
-    <>
-      <nav className="px-16 py-4 flex justify-between items-center border-b">
+    <div className="border-b border-[#E9E9E9]">
+      <nav className="px-6 md:px-16 py-4 flex justify-between items-center max-w-7xl mx-auto">
 
         <div className="flex gap-6">
 
@@ -75,7 +75,7 @@ export default function Navbar(){
               className="nav-link"
               onClick={handleLogout}
             >
-              <UserRound />
+              <LogOut />
             </button>
 
           ) : (
@@ -91,6 +91,7 @@ export default function Navbar(){
       </nav>
 
       <CartPopup open={open} onClose={() => setOpen(false)} />
-    </>
+      
+    </div>
   )
 }
